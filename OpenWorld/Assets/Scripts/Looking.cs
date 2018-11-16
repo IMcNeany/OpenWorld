@@ -32,7 +32,7 @@ public class Looking : MonoBehaviour {
     {
         if (Input.GetKey(KeyCode.Mouse0))
             {
-            Debug.Log("true");
+          
             if (axes == RotationAxes.MouseXAndY)
             {
                 rotAverageY = 0f;
@@ -122,7 +122,6 @@ public class Looking : MonoBehaviour {
         }
         else
         {
-            Debug.Log(false);
         }
     }
 
