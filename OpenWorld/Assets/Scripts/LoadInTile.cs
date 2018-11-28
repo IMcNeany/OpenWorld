@@ -5,6 +5,8 @@ using System.IO;
 
 
 public class LoadInTile : MonoBehaviour {
+    int width = 3;
+    int height = 4;
     int row = 10;
     int col = 10;
     float scale = 10.0f;
@@ -14,18 +16,66 @@ public class LoadInTile : MonoBehaviour {
     public GameObject[] edgePieces;
     public GameObject[] houses;
     GameObject instance;
+    List<GameObject> Sections;
     int SectionToLoad;
     // Use this for initialization
     void Start () {
         tile_data = new char[row * col];
         tileObject = new int[row * col];
+
+        CreateGrid();
         LoadFromFile(1);
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
+      //  CheckDistance();
 	}
+
+    void CreateGrid()
+    {
+        int sectionNo = 1;
+        int x = 0;
+        int z = 0;
+
+        TerrainData terrain_Data = new TerrainData();
+
+        // terrain_Data.size = new Vector3(100, 100, 50);
+        terrain_Data.size = new Vector3(10, 10, 10);
+        terrain_Data.heightmapResolution = 512;
+        terrain_Data.baseMapResolution = 1024;
+        terrain_Data.SetDetailResolution(1024, 16);
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                GameObject section = new GameObject("Section" + sectionNo);
+                section.transform.position= new Vector3(x, 0, z);
+                section.AddComponent<Terrain>();
+                section.AddComponent<TerrainCollider>();
+                terrain = section.GetComponent<Terrain>();
+                terrain.terrainData = terrain_Data;
+                TerrainCollider terrainCollider = section.GetComponent<TerrainCollider>();
+                terrainCollider.terrainData = terrain_Data;
+                
+                z += 100;
+                sectionNo++;
+            }
+
+            x += 100;
+            z = 0;
+        }
+    }
+
+    void CheckDistance()
+    {
+        Transform camera = Camera.main.transform;
+
+        //for each section check if they have children
+        //then check how far away the camera is
+        //either destory or load
+    }
 
     public void LoadFromFile(int Load)
     {
