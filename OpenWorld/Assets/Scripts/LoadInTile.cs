@@ -12,24 +12,25 @@ public class LoadInTile : MonoBehaviour {
     float scale = 10.0f;
     char[] tile_data;
     private int[] tileObject;
-    public Terrain terrain;
+    Terrain terrain;
     public GameObject[] edgePieces;
     public GameObject[] houses;
     GameObject instance;
-    List<GameObject> Sections;
+    List<GameObject> sections;
     int SectionToLoad;
+    public Texture2D[] grassTexture;
     // Use this for initialization
     void Start () {
         tile_data = new char[row * col];
         tileObject = new int[row * col];
-
+        sections = new List<GameObject>();
         CreateGrid();
         LoadFromFile(1);
     }
 	
 	// Update is called once per frame
 	void Update () {
-      //  CheckDistance();
+        CheckDistance();
 	}
 
     void CreateGrid()
@@ -45,7 +46,11 @@ public class LoadInTile : MonoBehaviour {
         terrain_Data.heightmapResolution = 512;
         terrain_Data.baseMapResolution = 1024;
         terrain_Data.SetDetailResolution(1024, 16);
-
+        SplatPrototype[] terrainTexture = new SplatPrototype[1];
+        Debug.Log(terrainTexture + "splat"+ grassTexture[0]+ "boom");
+        terrainTexture[0] = new SplatPrototype();
+        terrainTexture[0].texture = grassTexture[0];
+        terrain_Data.splatPrototypes = terrainTexture;
         for (int i = 0; i < height; i++)
         {
             for (int j = 0; j < width; j++)
@@ -58,7 +63,7 @@ public class LoadInTile : MonoBehaviour {
                 terrain.terrainData = terrain_Data;
                 TerrainCollider terrainCollider = section.GetComponent<TerrainCollider>();
                 terrainCollider.terrainData = terrain_Data;
-                
+                sections.Add(section);
                 z += 100;
                 sectionNo++;
             }
@@ -72,12 +77,40 @@ public class LoadInTile : MonoBehaviour {
     {
         Transform camera = Camera.main.transform;
 
+        for(int i = 0; i <sections.Count;i++)
+        {
+            Debug.Log((Vector3.Distance(camera.position, sections[i].transform.position) < 150 )+ "sections"  + i);
+            if(Vector3.Distance(camera.position, sections[i].transform.position) < 150)
+            {
+                if(sections[i].transform.childCount == 0)
+                {
+                    LoadFromFile(i + 1);
+                    i--;
+                }
+            }
+            else
+            {
+                destroy(i++);
+                i--;
+            }
+        }
         //for each section check if they have children
         //then check how far away the camera is
         //either destory or load
     }
 
-    public void LoadFromFile(int Load)
+    void destroy(int destory)
+    {
+        GameObject sectionToDestroy = GameObject.Find("Section" + destory);
+
+        for(int i =0; i < sectionToDestroy.transform.childCount; i++)
+        {
+           Transform child = sectionToDestroy.transform.GetChild(i);
+            Destroy(child);
+        }
+    }
+
+    void LoadFromFile(int Load)
     {
         SectionToLoad = Load;
         DirectoryInfo dir = new DirectoryInfo(Application.streamingAssetsPath + "/" + "Section" + SectionToLoad + ".txt");
