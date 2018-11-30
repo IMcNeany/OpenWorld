@@ -19,12 +19,14 @@ public class LoadInTile : MonoBehaviour {
     List<GameObject> sections;
     int SectionToLoad;
     public Texture2D[] grassTexture;
+    Transform camera;
     // Use this for initialization
     void Start () {
         tile_data = new char[row * col];
         tileObject = new int[row * col];
         sections = new List<GameObject>();
         CreateGrid();
+        camera = Camera.main.transform;
         LoadFromFile(1);
     }
 	
@@ -75,23 +77,22 @@ public class LoadInTile : MonoBehaviour {
 
     void CheckDistance()
     {
-        Transform camera = Camera.main.transform;
-
-        for(int i = 0; i <sections.Count;i++)
+        for(int i = 0; i < sections.Count;i++)
         {
             Debug.Log((Vector3.Distance(camera.position, sections[i].transform.position) < 150 )+ "sections"  + i);
             if(Vector3.Distance(camera.position, sections[i].transform.position) < 150)
             {
+                Debug.Log(sections[i].transform.childCount + "secion" + i);
                 if(sections[i].transform.childCount == 0)
                 {
-                    LoadFromFile(i + 1);
-                    i--;
+                   LoadFromFile(i + 1);
+                  // i--;
                 }
             }
             else
             {
-                destroy(i++);
-                i--;
+                destroy(i+1);
+               // i--;
             }
         }
         //for each section check if they have children
@@ -106,7 +107,7 @@ public class LoadInTile : MonoBehaviour {
         for(int i =0; i < sectionToDestroy.transform.childCount; i++)
         {
            Transform child = sectionToDestroy.transform.GetChild(i);
-            Destroy(child);
+            Destroy(child.gameObject);
         }
     }
 
@@ -167,17 +168,17 @@ public class LoadInTile : MonoBehaviour {
         {
             for (int j = 0; j < row; j++)
             {
-                Debug.Log("data count " + tile_data[count]);
+                
                 if (tile_data[count] == '0')
                 {
-                    Debug.Log("hit0" );
+                   
                     
                     // instan.transform.position = new Vector3(instan.transform.position.x, 2.5f, instan.transform.position.z);
                 }
                 else if(tile_data[count] == '1')
                 {
-                    Debug.Log("hit1");
-                    instance = Instantiate(edgePieces[0] , (new Vector3(j * scale, 0.1f, i * scale)), Quaternion.identity);
+                    
+                    instance = Instantiate(edgePieces[0] , (new Vector3((j * scale) + parent.transform.position.x, 0.1f, (i * scale) + parent.transform.position.z)), Quaternion.identity);
                     instance.name = "tile" + i + j;
                     //instance.transform.parent = 
                    // GameObject parent = GameObject.Find("Section" + SectionToLoad);
@@ -186,13 +187,10 @@ public class LoadInTile : MonoBehaviour {
                 else if (tile_data[count] == '2')
                 {
                    int k = Random.Range(0, 4);
-                    Debug.Log("rand" + k);
-                   instance = Instantiate(houses[k], (new Vector3(j * scale, 0.1f, i * scale)), Quaternion.identity);
+                   instance = Instantiate(houses[k], (new Vector3((j * scale) + parent.transform.position.x, 0.1f, (i * scale) + parent.transform.position.z)), Quaternion.identity);
                    instance.name = "tile" + i + j;
                    instance.transform.parent = parent.transform;
                 }
-                
-                //instance.transform.parent = maze_holder.transform;
                 count++;
             }
         }
