@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ad8dc697f80c6f84abb3e88dcdd5e6b5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.5623202, g: 0.53287727, b: 0.49586946, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,7 +244,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &534669905
@@ -383,6 +383,8 @@ MonoBehaviour:
   - {fileID: 1851311249599082, guid: 334d2f7c2054e48f0a6985fcd4aa0a12, type: 2}
   - {fileID: 1786370680930602, guid: 06400e856f3614486bb6eeaa39557047, type: 2}
   - {fileID: 1184530321893156, guid: d5acaddb0246c4a3ba5a7f5e09ebb355, type: 2}
+  AI:
+  - {fileID: 197182, guid: 24db59fb98046473f8eaec9590faf4bc, type: 2}
   grassTexture:
   - {fileID: 2800000, guid: 85cdb49f460bbf14a82b8ea1c20c07bc, type: 3}
 --- !u!4 &1927766163
