@@ -31,6 +31,7 @@ public class LoadInTile : MonoBehaviour {
         sections = new List<GameObject>();
         CreateGrid();
         camera = Camera.main.transform;
+       
       //  LoadFromFile(2);
        // LoadFromFile(1);
         
@@ -41,6 +42,7 @@ public class LoadInTile : MonoBehaviour {
         if (!stopDistance)
         {
            CheckDistance();
+          
         }
 	}
 
@@ -75,7 +77,7 @@ public class LoadInTile : MonoBehaviour {
                 TerrainCollider terrainCollider = section.GetComponent<TerrainCollider>();
                 terrainCollider.terrainData = terrain_Data;
                 sections.Add(section);
-                section.AddComponent<CreateGrid>();
+               
                 z += 100;
                 sectionNo++;
             }
@@ -97,8 +99,8 @@ public class LoadInTile : MonoBehaviour {
                 {
                    stopDistance = true;
                    LoadFromFile(i + 1);
-                    
-                  // i--;
+                    SetUpAI(i);
+                    // i--;
                 }
             }
             else
@@ -122,6 +124,12 @@ public class LoadInTile : MonoBehaviour {
             Destroy(child.gameObject);
         }
     }
+    void SetUpAI(int i)
+    { 
+      
+        sections[i].AddComponent<CreateGrid>();
+        
+    }
 
     void LoadFromFile(int Load)
     {
@@ -134,7 +142,8 @@ public class LoadInTile : MonoBehaviour {
         foreach (FileInfo file in allFiles)
        {
 
-           StartCoroutine("LoadSection", file);
+            // StartCoroutine("LoadSection", file);
+            LoadSection(file);
         }
     }
 

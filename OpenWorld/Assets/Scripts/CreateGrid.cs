@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateGrid : MonoBehaviour {
-    int width = 10;
-    int height = 10;
-    int radius = 10;
+    int width = 100;
+    int height = 100;
+    List<Node> nodeArray;
+
 	// Use this for initialization
 	void Start () {
-        OnDrawGizmos();
-        Grid();
+        string name = gameObject.transform.name;
+        StartCoroutine("Grid");
+        nodeArray = new List<Node>();
 	}
 	
 	// Update is called once per frame
@@ -30,17 +32,26 @@ public class CreateGrid : MonoBehaviour {
         }
     }
 
-    void Grid()
+    IEnumerator Grid()
     {
+        int x = 1;
+        int z = 1;
         for (int i = 0; i < width; i++)
         {
-            for(int j = 0; j < height; j++)
+            
+            for (int j = 0; j < height; j++)
             {
-
-                j++;
+                
+                GameObject instance = (GameObject)Instantiate(Resources.Load("Node"), new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y, gameObject.transform.position.z + z), new Quaternion(0, 0, 0, 1));
+                instance.transform.parent = GameObject.Find(name).transform;
+               // nodeArray.Add(instance.GetComponent<Node>());
+                z += 1;
             }
-            i++;
-        }
-    }
+            z = 1;
+            x += 1;
 
+        }
+        yield break;
+    }
+ 
 }
