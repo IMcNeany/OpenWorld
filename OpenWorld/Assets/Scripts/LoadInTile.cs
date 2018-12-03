@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 
 public class LoadInTile : MonoBehaviour {
-    int width = 3;
-    int height = 4;
+    int width = 1;//3;
+    int height = 1;// 4;
     int row = 10;
     int col = 10;
     float scale = 10.0f;
@@ -33,7 +33,7 @@ public class LoadInTile : MonoBehaviour {
         camera = Camera.main.transform;
        
       //  LoadFromFile(2);
-       // LoadFromFile(1);
+      //  LoadFromFile(1);
         
     }
 	
@@ -223,9 +223,9 @@ public class LoadInTile : MonoBehaviour {
                 }
                 else if (tile_data[count] == '3')
                 { 
-                    instance = Instantiate(AI[0], (new Vector3((j * scale) + parent.transform.position.x, 0.5f, (i * scale) + parent.transform.position.z)), Quaternion.identity);
+                    instance = Instantiate(AI[0], (new Vector3((j * scale) + parent.transform.position.x, 0.0f, (i * scale) + parent.transform.position.z)), Quaternion.identity);
                     instance.name = "AI";
-                    instance.AddComponent<NavMeshAgent>();
+                    instance.AddComponent<AI>();
                     instance.transform.parent = parent.transform;
                 }
                 count++;

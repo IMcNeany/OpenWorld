@@ -10,19 +10,35 @@ public class Node : MonoBehaviour {
     public Node parent;
     public bool walkable = true;
     public int calculateFCost() { return gCost + hCost; }
-
-    private void OnTriggerStay(Collider other)
+    private void Start()
     {
-        Debug.Log(other.name + "coller name");
-        if (other.tag == "House" || other.tag == "Rock")
-            {
-            walkable = false;
-            }
-        else
-        {
-            walkable = true;
-        }
+      
+    walkable = true;
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+     
+    //    if (other.gameObject.GetComponent<Camera>())
+    //    {
+            
+    //    }
+    //    else if(other.transform.parent.tag == "Terrain")
+    //    {
+    //        Debug.Log("False");
+    //        walkable = true;
+    //    }
+    //    else if (other.transform.parent.tag == "House" || other.transform.parent.tag == "Rock")
+    //        {
+    //        Debug.Log("False");
+    //        walkable = false;
+    //        }
+    //    else
+    //    {
+    //        Debug.Log("elseeee");
+    //        walkable = true;
+    //    }
+    //}
 }
 
 

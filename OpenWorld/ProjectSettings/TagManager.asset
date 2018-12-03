@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Rock
   - House
+  - Terrain
   layers:
   - Default
   - TransparentFX
