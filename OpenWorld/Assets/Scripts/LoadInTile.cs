@@ -6,8 +6,8 @@ using UnityEngine.AI;
 
 
 public class LoadInTile : MonoBehaviour {
-    int width = 1;//3;
-    int height = 1;// 4;
+    int width =3;
+    int height = 4;
     int row = 10;
     int col = 10;
     float scale = 10.0f;

@@ -724,6 +724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4949739157609312}
+  - component: {fileID: 65851500453644720}
   m_Layer: 0
   m_Name: House2
   m_TagString: House
@@ -17275,6 +17276,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.82577425, y: 1.7789757, z: 0.10232777}
   m_Center: {x: 0.397103, y: 0.032488924, z: -0.00746945}
+--- !u!65 &65851500453644720
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145633360059986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7, y: 3, z: 14}
+  m_Center: {x: 1, y: 0, z: -1.5}
 --- !u!65 &65858990002692558
 BoxCollider:
   m_ObjectHideFlags: 1

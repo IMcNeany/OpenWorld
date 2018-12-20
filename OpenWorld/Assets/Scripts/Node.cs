@@ -16,29 +16,24 @@ public class Node : MonoBehaviour {
     walkable = true;
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log(other.transform.name + "tag");
+        if (other.gameObject.GetComponent<Camera>())
+        {
+
+        }
+        else if (other.transform.parent.tag == "Terrain")
+        {
+           
+            walkable = true;
+        }
+        else if (other.transform.tag == "Door" || other.transform.tag == "Rock")
+        {
+            walkable = false;
+        }
      
-    //    if (other.gameObject.GetComponent<Camera>())
-    //    {
-            
-    //    }
-    //    else if(other.transform.parent.tag == "Terrain")
-    //    {
-    //        Debug.Log("False");
-    //        walkable = true;
-    //    }
-    //    else if (other.transform.parent.tag == "House" || other.transform.parent.tag == "Rock")
-    //        {
-    //        Debug.Log("False");
-    //        walkable = false;
-    //        }
-    //    else
-    //    {
-    //        Debug.Log("elseeee");
-    //        walkable = true;
-    //    }
-    //}
+    }
 }
 
 
