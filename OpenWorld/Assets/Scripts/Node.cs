@@ -18,21 +18,23 @@ public class Node : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.transform.name + "tag");
-        if (other.gameObject.GetComponent<Camera>())
-        {
+        /* Debug.Log(other.transform.name + "tag");
+         if (other.gameObject.GetComponent<Camera>())
+         {
 
-        }
-        else if (other.transform.parent.tag == "Terrain")
-        {
-           
-            walkable = true;
-        }
-        else if (other.transform.tag == "Door" || other.transform.tag == "Rock")
-        {
-            walkable = false;
-        }
-     
+         }
+         else if (other.transform.parent.tag == "Terrain")
+         {
+             walkable = true;
+         }
+         else
+         {
+             walkable = false;
+         }
+
+     }*/
+
+        walkable = false;
     }
 }
 
