@@ -52,10 +52,11 @@ public class AI : MonoBehaviour
                 {
                     path = null;
                     pathIndex = 0;
+                    
                 }
             }
         }
-        else if (!waitingForPath)
+        else if (!waitingForPath || path == null )
         {
             findNewRandomPath();
             waitingForPath = true;
@@ -76,11 +77,13 @@ public class AI : MonoBehaviour
     {
         Node randomNode = getRandomWalkableNode();
         path = CreatePath(transform.position, randomNode.transform.position);
+        
         waitingForPath = false;
     }
 
     public List<Node> CreatePath(Vector3 startPosition, Vector3 endPosition)
     {
+       
         start = getNodeFromPosition(startPosition);
         Node end = getNodeFromPosition(endPosition);
 
@@ -92,7 +95,8 @@ public class AI : MonoBehaviour
 
         openSet = new List<Node>();
         closedSet = new List<Node>();
-
+        openSet.Clear();
+        closedSet.Clear();
         openSet.Add(start);
 
         while (openSet.Count > 0)
@@ -116,14 +120,18 @@ public class AI : MonoBehaviour
 
             if (currentNode == end)
             {
-
-                return CheckPath(start, end);    //End reached trace path back
+               // openSet.Add(end);
+                return CheckPath(start, end);  
+                //End reached trace path back
+                
             }
 
             foreach (Node neighbour in getNeighbours(currentNode))
             {
                 if (!neighbour.walkable || closedSet.Contains(neighbour))
+                {
                     continue;
+                }
 
                 //Calculate the new lowest costs for the neighbour nodes
                 int costToNeighbour = currentNode.gCost + getDistance(currentNode, neighbour);

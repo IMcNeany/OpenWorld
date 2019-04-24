@@ -3695,6 +3695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4964557156441994}
   - component: {fileID: 65803649980265272}
+  - component: {fileID: 54558105167288450}
   m_Layer: 0
   m_Name: House1
   m_TagString: House
@@ -7516,7 +7517,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839910800035584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 62.42926, y: 42.78328, z: 46.72378}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4037840198596362}
@@ -17375,6 +17376,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54558105167288450
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1839910800035584}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!54 &54561029023104196
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -17415,7 +17431,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.58899987, y: 3.1481, z: -0.8970001}
+  m_ConnectedAnchor: {x: 61.4291, y: 40.14189, z: 49.674004}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -17449,7 +17465,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.7149999, y: 1.0999999, z: -0.54999983}
+  m_ConnectedAnchor: {x: 62.5551, y: 38.09379, z: 50.021004}
   m_UseSpring: 0
   m_Spring:
     spring: 1
@@ -17483,7 +17499,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.6239996, y: -0.979583, z: -3.5230007}
+  m_ConnectedAnchor: {x: 65.464096, y: 36.014206, z: 47.048004}
   m_UseSpring: 1
   m_Spring:
     spring: 1
@@ -17517,7 +17533,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.5579996, y: 4.8389997, z: -3.3830001}
+  m_ConnectedAnchor: {x: 61.398098, y: 41.83279, z: 47.188004}
   m_UseSpring: 0
   m_Spring:
     spring: 0

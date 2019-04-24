@@ -73,4 +73,9 @@ public class CreateGrid : MonoBehaviour {
     {
         return height;
     }
+
+    public void destory()
+    {
+        Destroy(this);
+    }
 }

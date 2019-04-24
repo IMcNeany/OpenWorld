@@ -118,10 +118,18 @@ public class LoadInTile : MonoBehaviour {
     {
         GameObject sectionToDestroy = GameObject.Find("Section" + destory);
 
-        for(int i =0; i < sectionToDestroy.transform.childCount; i++)
+        if (sectionToDestroy.transform.childCount >0 )
         {
-           Transform child = sectionToDestroy.transform.GetChild(i);
-            Destroy(child.gameObject);
+            for (int i = 0; i < sectionToDestroy.transform.childCount; i++)
+            {
+                Transform child = sectionToDestroy.transform.GetChild(i);
+                Destroy(child.gameObject);
+            }
+
+            if (sectionToDestroy.GetComponent<CreateGrid>() != null)
+            {
+                sectionToDestroy.GetComponent<CreateGrid>().destory();
+            }
         }
     }
     void SetUpAI(int i)
